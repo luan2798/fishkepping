@@ -8,8 +8,12 @@ html,body{
     margin: 0 0;
 }
 .header{
-    margin: 20px 175px;
+    margin: 0px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
+    max-width: 1000px;
+    width: auto;
 }
 #logo{
     height: 38px;
@@ -17,14 +21,16 @@ html,body{
 }
 #ten{
     margin: 0 0 0 0;
+    margin-right: auto;
     font-size: 24px;
 }
 #cart{
-    display: inline-block;
-    margin-left: 700px;
+    display:block;
+    margin-left: auto;
     font-size: 20px;
     color: #9094FF;
     text-decoration: none;
+    align-items: center;
 }
 #backgroundimg{
     position: absolute;
@@ -37,7 +43,7 @@ html,body{
 }
 .tieude{
     text-align: center;
-    margin-top: 45px;
+    padding-top: 45px;
 }
 .tieude h3{
     font-size: 20px;
@@ -54,7 +60,9 @@ html,body{
 }
 .sp{
     display: grid;
-    margin: 100px 190px 50px 175px;
+    margin: 0px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
     grid-template-columns: auto 10% 45%;
     grid-template-rows: 20% 10% auto 10% 20%; 
     grid-template-areas: 
@@ -133,7 +141,9 @@ html,body{
 }
 .sp2{
     display: grid;
-    margin: 100px 190px 50px 175px;
+    margin: 0px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
     grid-template-columns: auto 10% 45%;
     grid-template-rows: 20% 10% auto 10% 20%; 
     grid-template-areas: 
@@ -176,7 +186,7 @@ html,body{
 .div-footer
 {
     background-color: #EBEBEB;
-    width: auto;
+    width: 100%;
     padding: 100px 100px 100px 100px;
     text-align: center;
 }
@@ -189,16 +199,98 @@ html,body{
 }
 .end{
     color: ivory;
-    display: flex;
-    padding-left: 200px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 20px;
-    background: linear-gradient(90deg, #707070 0%, #474747 100%);
+    background-color: #474747;
+    
 }
-.end .cach{
-    width: 400px;
+.container-footer{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    margin: 0px auto;
+}
+.right{
+    margin-left: auto;
 }
 .end a{
     color: ivory;
+}
+
+
+
+
+
+#header-cart
+{
+    background-color: black;
+    color: wheat;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+#price
+{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 15px;
+    
+}
+#mycart{
+    position: absolute;
+}
+#sub{
+    margin: 0 auto;
+    padding-top: 17px;
+    font-weight: bold;
+}
+#body-cart{
+    background-color: white;
+}
+.frcart{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    background-color: white;
+    max-height: 200px;
+    display: none;
+}
+#ifrcart{
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0px auto;
+    
+}
+.btncheck{
+    margin: 0px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    max-width: 1000px;
+    width: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    height: auto;
+    max-height: 50px;
+}
+#checkbox{
+    width: 38px;
+    height: 36px;
+    display: block;
+    margin-left: auto;
+    padding-left: 20px;
+    opacity: 0;
+}
+#checkbox:checked+label >.frcart {
+    display: block;
 }
