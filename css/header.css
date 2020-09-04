@@ -8,29 +8,57 @@ html,body{
     margin: 0 0;
 }
 .header{
-    margin: 0px auto;
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
-    max-width: 1000px;
-    width: auto;
+}
+@media (max-width: 1000px){
+    .header{
+        margin-top: 35px;
+    }
 }
 #logo{
     height: 38px;
     margin-right: 20px;
+}
+@media (max-width: 1000px){
+    #logo{
+        height: 100px;
+    }
 }
 #ten{
     margin: 0 0 0 0;
     margin-right: auto;
     font-size: 24px;
 }
+@media (max-width: 1000px){
+    #ten{
+        font-size: 65px;
+        padding-left: 20px;
+    }
+}
 #cart{
-    display:block;
+    display:flex;
     margin-left: auto;
-    font-size: 20px;
+    font-size: 16px;
     color: #9094FF;
     text-decoration: none;
     align-items: center;
+}
+#price{
+    padding-left: 10px;
+}
+@media (max-width: 1000px){
+    *{
+        font-size: 50px;
+    }
+    #cart{
+        margin-top: 20px;
+    }
+    #cart-img{
+        height: 70px;
+        padding-right: 20px;
+    }
 }
 #backgroundimg{
     position: absolute;
@@ -43,7 +71,8 @@ html,body{
 }
 .tieude{
     text-align: center;
-    padding-top: 45px;
+    padding-top: 25px;
+    padding-bottom: 100px;
 }
 .tieude h3{
     font-size: 20px;
@@ -53,18 +82,37 @@ html,body{
     text-transform: uppercase;
     margin: 0;
 }
+
 .tieude h2{
     font-size: 100px;
     margin: 0;
     color: #9094FF;
 }
+@media (max-width: 1000px){
+    #backgroundimg {
+        height: 2000px;
+        position: fixed;
+    }
+    .tieude h3{
+        padding-top: 60px;
+        font-size: 50px;
+    }
+    .tieude h2{
+        font-size: 130px;
+    }
+    .tieude p{
+        font-size: 35.5px;
+    }
+    .tieude p b{
+        font-size: 35.5px;
+    }
+}
 .sp{
     display: grid;
     margin: 0px auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    grid-template-columns: auto 10% 45%;
-    grid-template-rows: 20% 10% auto 10% 20%; 
+    margin-bottom: 100px;
+    grid-template-columns: 48% 10% auto;
+    grid-template-rows: 20% 10% auto 10% 15%;  
     grid-template-areas: 
     "picture space title"
     "picture space line"
@@ -73,7 +121,22 @@ html,body{
     "picture space button"
     ;
     height: 288px;
-    width: 1000px;
+}
+@media (max-width: 1000px){
+    .sp{
+        display: grid;
+    margin: 0px auto;
+    margin-bottom: 100px;
+    grid-template-columns: 100%;
+    grid-template-rows: 45% 18% 30% 7%;  
+    grid-template-areas: 
+    "picture"
+    "title"
+    "mota"
+    "button"
+    ;
+    height: 1200px;
+    }
 }
 .sp img{
     grid-area: picture;
@@ -83,24 +146,46 @@ html,body{
     border-radius: 4px;
     box-shadow: 0px 18.025px 43.775px rgba(0, 0, 0, 0.25);
 }
-.sp h2{
+@media (max-width: 1000px){
+    .sp img{
+        border-radius: 16px;
+        box-shadow: 0px 75.025px 150.775px rgba(0, 0, 0, 0.25);
+    }
+}
+.sp>h2{
     grid-area: title;
     font-size: 32px;
     font-weight: bold;
     display: block;
     margin-left: 0px;
 }
+@media (max-width: 1000px){
+    .sp>h2{
+        font-size: 90px;
+    }
+}
 .sp p{
     grid-area: mota;
+}
+@media (max-width: 1000px){
+    .sp p{
+        font-size: 45px;
+    }
 }
 .sp>div{
     grid-area: button;
     display: flex;
     align-items: left;
 }
+
 .sp>div>div{
     font-size: 28px;
     font-weight: bold;
+}
+@media (max-width: 1000px){
+    .sp>div>div{
+        font-size: 60px;
+    }
 }
 .button{
     margin-left: 30px;
@@ -114,6 +199,12 @@ html,body{
     background-color: #9094FF;
     color: white;
     position: relative;
+}
+@media (max-width: 1000px){
+    .button{
+        margin-left: 70px;
+        font-size: 35px;
+    }
 }
 .button:hover {
     transition: 0.2s all;
@@ -142,10 +233,9 @@ html,body{
 .sp2{
     display: grid;
     margin: 0px auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    grid-template-columns: auto 10% 45%;
-    grid-template-rows: 20% 10% auto 10% 20%; 
+    margin-bottom: 100px;
+    grid-template-columns: 48% 10% auto;
+    grid-template-rows: 20% 10% auto 10% 15%; 
     grid-template-areas: 
     "b1 space picture"
     "line space picture"
@@ -154,7 +244,22 @@ html,body{
     "b3 space picture"
     ;
     height: 288px;
-    width: 1000px;
+}
+@media (max-width: 1000px){
+    .sp2{
+        display: grid;
+    margin: 0px auto;
+    margin-bottom: 100px;
+    grid-template-columns: 100%;
+    grid-template-rows: 45% 18% 30% 7%;  
+    grid-template-areas: 
+    "picture"
+    "b1"
+    "b2"
+    "b3"
+    ;
+    height: 1200px;
+    }
 }
 .sp2>img{
     grid-area: picture;
@@ -164,6 +269,12 @@ html,body{
     border-radius: 4px;
     box-shadow: 0px 18.025px 43.775px rgba(0, 0, 0, 0.25);
 }
+@media (max-width: 1000px){
+    .sp2 img{
+        border-radius: 16px;
+        box-shadow: 0px 75.025px 150.775px rgba(0, 0, 0, 0.25);
+    }
+}
 .sp2>h2{
     grid-area: b1;
     font-size: 32px;
@@ -171,8 +282,18 @@ html,body{
     display: block;
     margin-left: 0px;
 }
+@media (max-width: 1000px){
+    .sp2>h2{
+        font-size: 90px;
+    }
+}
 .sp2>p{
     grid-area: b2;
+}
+@media (max-width: 1000px){
+    .sp2 p{
+        font-size: 45px;
+    }
 }
 .sp2>div{
     grid-area: b3;
@@ -183,114 +304,101 @@ html,body{
     font-size: 28px;
     font-weight: bold;
 }
+@media (max-width: 1000px){
+    .sp2>div>div{
+        font-size: 60px;
+    }
+}
 .div-footer
 {
     background-color: #EBEBEB;
-    width: 100%;
-    padding: 100px 100px 100px 100px;
+    padding: 100px 50px 100px 50px;
     text-align: center;
 }
 .div-footer h2,span{
     font-size: 36px;
 }
+@media (max-width: 1000px){
+    .div-footer h2,span{
+        font-size: 90px;
+    }
+}
 .div-footer span{
     font-size: 36px;
     color: #9094FF;
 }
+@media (max-width: 1000px){
+    .div-footer span{
+        font-size: 90px;
+    }
+}
+@media (max-width: 1000px){
+    .div-footer p{
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+#button-end{
+    margin: 0;
+    padding: 10px 10px 10px 10px;
+    background-color: #343434;
+}
+@media (max-width: 1000px){
+    #button-end{
+        margin: 0;
+        padding: 30px 50px 30px 50px;
+        background-color: #343434;
+    }
+}
 .end{
     color: ivory;
-    padding-top: 10px;
+    padding-top: 25px;
     padding-bottom: 10px;
     font-size: 20px;
     background-color: #474747;
-    
+    display: flex;
+    height: 65px;
 }
-.container-footer{
+@media (max-width: 1000px){
+    .end{
+        height: 100px;
+    }
+}
+.container{
     width: 100%;
     max-width: 1000px;
-    display: flex;
     margin: 0px auto;
+    display: flex;
+}
+@media (max-width: 1000px){
+    .container{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
 }
 .right{
     margin-left: auto;
 }
+@media (max-width: 1000px){
+    .right a{
+        font-size: 30px;
+    }
+}
+@media (max-width: 1000px){
+    .left{
+        font-size: 30px;
+    }
+}
+@media (max-width: 1000px){
+    .left a{
+        font-size: 30px;
+    }
+}
 .end a{
+    
     color: ivory;
 }
-
-
-
-
-
-#header-cart
-{
-    background-color: black;
-    color: wheat;
-    display: flex;
-    text-align: center;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-#price
-{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 15px;
-    
-}
-#mycart{
-    position: absolute;
-}
-#sub{
-    margin: 0 auto;
-    padding-top: 17px;
-    font-weight: bold;
-}
-#body-cart{
-    background-color: white;
-}
-.frcart{
-    position: absolute;
-    top: 40px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    background-color: white;
-    max-height: 200px;
-    display: none;
-}
-#ifrcart{
+.footer-content{
     display: block;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0px auto;
-    
-}
-.btncheck{
-    margin: 0px auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    max-width: 1000px;
-    width: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    height: auto;
-    max-height: 50px;
-}
-#checkbox{
-    width: 38px;
-    height: 36px;
-    display: block;
-    margin-left: auto;
-    padding-left: 20px;
-    opacity: 0;
-}
-#checkbox:checked+label >.frcart {
-    display: block;
+    margin: 0 auto;
 }
