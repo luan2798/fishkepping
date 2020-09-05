@@ -149,7 +149,7 @@ html,body{
     display: grid;
     margin: 0px auto;
     margin-bottom: 100px;
-    grid-template-columns: 48% 10% auto;
+    grid-template-columns: auto 10% 48%;
     grid-template-rows: 20% 10% auto 10% 15%; 
     grid-template-areas: 
     "b1 space picture"
@@ -201,9 +201,12 @@ html,body{
     font-size: 36px;
     color: #9094FF;
 }
+.div-footer p{
+    font-weight: 600;
+}
 #button-end{
     margin: 0;
-    padding: 10px 10px 10px 10px;
+    padding: 12px 20px 12px 20px;
     background-color: #343434;
 }
 .right{
@@ -215,7 +218,7 @@ html,body{
     padding-top: 25px;
     padding-bottom: 10px;
     font-size: 20px;
-    background-color: #474747;
+    background: linear-gradient(90deg, #707070 0%, #474747 100%);
     display: flex;
     height: 65px;
 }
