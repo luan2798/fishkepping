@@ -1,5 +1,5 @@
     /* common */
-@media (max-width: 600px){
+@media (max-width: 1000px){
     #backgroundimg {
         height: 100px;
         position: fixed;
