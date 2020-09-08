@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" class="next-head">
         <link rel="stylesheet" type="text/css" href="./css/header.css">
         <link rel="stylesheet" type="text/css" href="./css/media.css">
+        <link rel="stylesheet" type="text/css" href="./css/cart.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
     </head>
     <body>
@@ -14,14 +15,26 @@
                 <img src="./img/logo.svg" id="logo" alt="a" />
                 <h1 id="ten">FishCastle</h1>
                 <div>
-                    <a href="" id="cart">
+                    <a onclick="test()" id="cart">
                         <img src="./img/abc.svg" id="cart-img"/>
-                        <div id="price"><b>$25.00</b></div>
+                        <div id="price"><b>$0.00</b></div>
                     </a>
                 </div>
             </div>
         </header>
-        
+        <div class="popup-cart">
+            <div class="container" id="header-carts">
+                <h2>MY CART</h2>
+                <span class="container-price">
+                    <span>SUBTOTAL:</span>
+                    <span class="price">$0.00</span>
+                </span>
+                <button onclick="exit()">x</button>
+            </div>
+            <div class="container" id="body-carts">
+                <h2>THE CART IS NOW EMPTY. SELECT SOME PRODUCTS TO BUY BEFORE CHECKING OUT.</h2>
+            </div>
+        </div>
         <main class="main">
             <img src="./img/background.svg" alt="" id="backgroundimg">
             <div class="tieude">
@@ -39,7 +52,7 @@
                         <div>
                             <div>$ 25.00</div>
                             <!--<input type="button" class="button" value="Add to cart">-->
-                            <button class="button">
+                            <button class="button" onclick="buttonclick()">
                                 Add to cart
                             </button>
                         </div>
@@ -51,7 +64,7 @@
                             It is recognized by its large tail that can flare up to 180 degrees.</p>
                         <div>
                             <div>$ 25.00</div>
-                            <button class="button">
+                            <button class="button" onclick="buttonclick()">
                                 Add to cart
                             </button>
                         </div>
@@ -63,7 +76,7 @@
                             It is recognized by its large tail that can flare up to 180 degrees.</p>
                         <div>
                             <div>$ 25.00</div>
-                            <button class="button">
+                            <button class="button" onclick="buttonclick()">
                                 Add to cart
                             </button>
                         </div>
@@ -75,7 +88,7 @@
                             It is recognized by its large tail that can flare up to 180 degrees.</p>
                         <div>
                             <div>$ 25.00</div>
-                            <button class="button">
+                            <button class="button" onclick="buttonclick()">
                                 Add to cart
                             </button>
                         </div>
@@ -113,4 +126,5 @@
             </div>
         </footer>
     </body>
+    <script type="text/javascript" src="./js/cart.js"></script>
 </html>

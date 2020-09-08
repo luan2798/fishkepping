@@ -11,9 +11,6 @@
 }
     /* header */
 @media (max-width: 600px){
-    .header{
-        
-    }
     #logo{
         height: 38px;
     }
