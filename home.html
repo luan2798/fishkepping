@@ -17,7 +17,7 @@
                 <div>
                     <a onclick="test()" id="cart">
                         <img src="./img/abc.svg" id="cart-img"/>
-                        <div id="price"><b>$0.00</b></div>
+                        <div id="container-price">$<span class=price>0</span>.00</div>
                     </a>
                 </div>
             </div>
@@ -27,12 +27,29 @@
                 <h2>MY CART</h2>
                 <span class="container-price">
                     <span>SUBTOTAL:</span>
-                    <span class="price">$0.00</span>
+                    <span>$ <span class="price"> 0.00</span></span>
                 </span>
                 <button onclick="exit()">x</button>
             </div>
             <div class="container" id="body-carts">
-                <h2>THE CART IS NOW EMPTY. SELECT SOME PRODUCTS TO BUY BEFORE CHECKING OUT.</h2>
+               <div class="product-header">
+                   <h5 class="product-title">ITEM</h5>
+                   <h5 class="quantity">QUANTITY</h5>
+                   <h5 class="price-product">PRICE</h5>
+                   <h5 class="total">TOTAL</h5>
+                   <h5 class="del"></h5>
+               </div>
+               <div class="products">
+
+               </div>
+               <div class="promo">
+                    <a href=""> Promo Code</a>    
+                </div>
+                <div class="clear"></div>
+                <div>
+                    <button class="btn-cart">NEXT STEP</button>
+                </div>
+                <div class="clear"></div>
             </div>
         </div>
         <main class="main">
@@ -52,43 +69,43 @@
                         <div>
                             <div>$ 25.00</div>
                             <!--<input type="button" class="button" value="Add to cart">-->
-                            <button class="button" onclick="buttonclick()">
+                            <button class="button cart1">
                                 Add to cart
                             </button>
                         </div>
                     </div>
                     <div class="sp2">
                         <img src="./img/dragonscale.jpg" alt="">
-                        <h2>Halfmoon  Betta</h2>
+                        <h2>Dragon Scale Betta</h2>
                         <p>The Halfmoon betta is arguably one of the prettiest betta species. 
                             It is recognized by its large tail that can flare up to 180 degrees.</p>
                         <div>
-                            <div>$ 25.00</div>
-                            <button class="button" onclick="buttonclick()">
+                            <div>$ 30.00</div>
+                            <button class="button cart2" >
                                 Add to cart
                             </button>
                         </div>
                     </div>
                     <div class="sp">
                         <img src="./img/halfmoon.jpg" alt="">
-                        <h2>Halfmoon  Betta</h2>
+                        <h2>Crowntail Betta</h2>
                         <p>The Halfmoon betta is arguably one of the prettiest betta species. 
                             It is recognized by its large tail that can flare up to 180 degrees.</p>
                         <div>
-                            <div>$ 25.00</div>
-                            <button class="button" onclick="buttonclick()">
+                            <div>$ 7.00</div>
+                            <button class="button cart3" >
                                 Add to cart
                             </button>
                         </div>
                     </div>
                     <div class="sp2">
                         <img src="./img/dragonscale.jpg" alt="">
-                        <h2>Halfmoon  Betta</h2>
+                        <h2>Veiltail Betta</h2>
                         <p>The Halfmoon betta is arguably one of the prettiest betta species. 
                             It is recognized by its large tail that can flare up to 180 degrees.</p>
                         <div>
-                            <div>$ 25.00</div>
-                            <button class="button" onclick="buttonclick()">
+                            <div>$ 5.00</div>
+                            <button class="button cart4" >
                                 Add to cart
                             </button>
                         </div>
@@ -102,7 +119,7 @@
                     <div class="footer-content">
                         <h2>Any questions? <span>Contact us.</span></h2>
                         <p>We're looking forward to hearing from you. Feel free to contact us if you have any questions!</p>
-                        <button class="button" id="button-end">
+                        <button class="button-end">
                             Contact Us
                         </button>
                     </div>

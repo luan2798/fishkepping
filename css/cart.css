@@ -46,7 +46,69 @@
 /* body */
 #body-carts{
     background-color: white;
+    display: block  ;
 }
 #body-carts>h2{
     margin: 20px auto;
+}
+.product-header{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    margin: 0 auto;
+    border-bottom: 1px solid;
+}
+.product-title{
+    width: 45%;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+.quantity
+{
+    width: 20%;
+}
+.price-product{
+    width: 20%;
+}
+.total{
+    width: 20%;
+}
+.del{
+    width: 5%;
+}
+/*product*/
+.product{
+    width: 100%;
+    display: flex;
+    font-weight: 16px;
+    align-items: center;
+}
+.product img {
+    height: 50px;
+    width: 70px;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+/*promo*/
+.promo{
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    height: 50px;
+    align-items: center;
+}
+.promo a{
+    margin-right: 20px;
+    float: right;
+}
+.btn-cart{
+    float: right;
+    margin-right: 20px;
+    background-color: #efe778;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.clear{
+    clear: both;
 }
