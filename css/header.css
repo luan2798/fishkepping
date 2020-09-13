@@ -44,6 +44,9 @@ html,body{
     text-decoration: none;
     align-items: center;
 }
+#cart:hover{
+    cursor: pointer;
+}
 #container-price{
     padding-left: 10px;
     font-weight: bold;
