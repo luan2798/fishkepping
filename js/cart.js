@@ -1,39 +1,70 @@
-let carts=document.querySelectorAll('.button');
 let products =[
     {
+        id: 1,
         name:'Halfmoon Betta',
         tag:'halfmoon',
+        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
         price: 25,
         incart: 0
     },
     {
+        id: 2,
         name:'Dragon Scale Betta',
         tag:'dragonscale',
+        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
         price: 35,
         incart: 0
     },
     {
+        id: 3,
         name:'Crowntail Betta',
         tag:'crowntail',
+        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
         price: 7,
         incart: 0
     },
     {
+        id: 4,
         name:'Veiltail Betta',
         tag:'veiltail',
+        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
         price: 5,
         incart: 0
     }
 ];
 //event click
-for(let i=0;i<carts.length;i++){
-    carts[i].addEventListener('click',() => {
-        increase(products[i]);
-        displayCart();
-        loadbutton();
-        test();
-    })
+
+function showproduct(){
+    let sp=document.querySelector(".list-sp");
+    let k=0;
+    let t;
+    sp.innerHTML=``;
+    products.forEach(product => {
+        if (k%2===0){
+            t='sp';
+        }
+        else
+        {
+            t='sp2';
+        }
+        sp.innerHTML+=`
+                    <div class="${t}">
+                        <img src="./img/${product.tag}.jpg" alt="">
+                        <h2>${product.name}</h2>
+                        <p>${product.title}</p>
+                        <div>
+                            <div>$ ${product.price}.00</div>
+                            <!--<input type="button" class="button" value="Add to cart">-->
+                            <button class="button" id="${product.id}">
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+        `;
+        k=k+1;
+    });
 }
+
 
 //increase incart
 function decreaseItem(product){
@@ -83,35 +114,25 @@ function setItem(product){
 }
 
 //totalCost
-function totalCost(product){
-    let cartCost=localStorage.getItem("totalCost");
-    if(cartCost !=null){
-        cartCost=parseInt(cartCost);
-        localStorage.setItem("totalCost",cartCost+product.price)
-    }else{
-        localStorage.setItem("totalCost",product.price);
+function totalCost(){
+    let cartItem =localStorage.getItem("productsInCart");
+    cartItem=JSON.parse(cartItem);
+    let k=0;
+    if(cartItem)
+    {
+        Object.values(cartItem).map(item =>{
+            k=k+item.price*item.incart;
+        });
     }
+    localStorage.setItem("totalCost",k);
 }
-
-//totalcost remove
-function totalCostRemove(product){
-    let cartCost=localStorage.getItem("totalCost");
-    localStorage.setItem("totalCost",cartCost-product.price);
-}
-//totalcost dell
-function totalCostDell(product){
-    let tcartItems =localStorage.getItem('productsInCart');
-    tcartItems = JSON.parse(tcartItems);
-    let cartCost=localStorage.getItem("totalCost");
-    localStorage.setItem("totalCost",cartCost-product.price*tcartItems[product.tag].incart);
-}
-
-
+totalCost();
 //display cart
 function displayCart(){
     let cartItem =localStorage.getItem("productsInCart");
     cartItem=JSON.parse(cartItem);
     let productContainer=document.querySelector("#body-carts");
+    let subtotal = document.querySelector("#container_price");
     if(cartItem &&productContainer){
         productContainer.innerHTML='';
         productContainer.innerHTML +=`<div class="product-header">
@@ -127,7 +148,7 @@ function displayCart(){
                     <div class="product">
                         <div class=product-title>
                             <img src="./img/${item.tag}.jpg">
-                            <div>${item.name}</div>
+                            <div><b>${item.name}</b></div>
                         </div>
                         <div class="quantity">
                             <div class="minus ${item.tag}">
@@ -140,7 +161,7 @@ function displayCart(){
                         </div>
                         <div class="price-product">$${item.price}.00</div>
                         <div class="total">$${item.price*item.incart}.00</div>
-                        <button class="del ${item.tag}">x</button>
+                        <button class="del ${item.tag}" style="font-size: 30px;">x</button>
                     </div>
                </div>
             `
@@ -153,10 +174,12 @@ function displayCart(){
                                         <button class="btn-cart">NEXT STEP</button>
                                     </div>
                                     <div class="clear"></div>`;
+                                    subtotal.style.visibility ="visible"; 
     }
     else
     {
         //let Container=document.querySelector("#body-carts");
+        subtotal.style.visibility ="hidden";    
         productContainer.innerHTML=`<div class="empty">
         THE CART IS NOW EMPTY. SELECT SOME PRODUCTS TO BUY BEFORE CHECKING OUT.
         </div>`
@@ -166,13 +189,12 @@ function displayCart(){
     for (let j=0;j<obj.length;j++){
         obj[j].innerHTML=cartCost;
     }
-
 }
 
 // increase item
 function increase(product){
     setItem(product)
-    totalCost(product);
+    totalCost();
     displayCart();
     loadbutton()
 }
@@ -180,7 +202,7 @@ function increase(product){
 //decrease item
 function decrease(product){
     decreaseItem(product)
-    totalCostRemove(product);
+    totalCost();
     displayCart();
     loadbutton()
 }
@@ -214,9 +236,9 @@ function remove(tag){
             localStorage.setItem("productsInCart", JSON.stringify(tcartItems));
         }
     })  
+    totalCost();
     displayCart();
 }
-
 
 //open close cart
 function test(){
@@ -226,15 +248,8 @@ function exit(){
     document.getElementsByClassName("popup-cart")[0].style.display = "none";
 }
 
+
 function loadbutton(){
-    //click add
-    //let btn=document.getElementsByClassName("btn-cart");
-    //btn[0].addEventListener('click',()=>{
-    //    let productContainer=document.querySelector(".products");
-    //    productContainer.innerHTML='<div id="snipcart-sub-content"><div class="snipcart-step"><div class="snip-cols snip-layout__content"><div id="snipcart-guest-checkout-container" class="snip-col snip-col--right snip-col--half"><h2 class="snip-static__title">Checkout as a guest</h2><p class="snip-static__content">Checkout as a guest if you dont want to create an account for this purchase. Please note that your information wont be saved for your next orders.</p><a href="#" id="snipcart-guest-checkout" class="snip-btn snip-btn--highlight snip-btn--full">Checkout</a></div><div id="snipcart-login-form-container" class="snip-col snip-col--half"><h2 class="snip-static__title">Sign in</h2><form class="snip-static__content"><div data-for="email" class="snip-form__container snip-form__container--input"><label for="snipcart-login-email" class="snip-form__label">Email</label><input type="text" name="email" id="snipcart-login-email"></div><div data-for="password" class="snip-form__container snip-form__container--input"><label for="snipcart-login-password" class="snip-form__label">Password</label><input type="password" name="password" id="snipcart-login-password"></div><a href="#" id="snipcart-login-forgotpassword-link" class="snip-static__link">I forgot my password</a><a href="#" id="snipcart-login-submit" class="snip-btn snip-btn--full">Log in</a><button type="submit" style="display: none"></button></form></div><div id="snipcart-newaccount-form-container" class="snip-col snip-col--half"><h2 class="snip-static__title">Create a login</h2><form class="snip-static__content"><div data-for="email" class="snip-form__container snip-form__container--input"><label for="snipcart-newaccount-email" class="snip-form__label">Email</label><input type="text" name="email" id="snipcart-newaccount-email" autocomplete="off"></div><div data-for="password" class="snip-form__container snip-form__container--input"><label for="snipcart-newaccount-password" class="snip-form__label">Password</label><input type="password" name="password" id="snipcart-newaccount-password" autocomplete="off"></div><div data-for="confirm" class="snip-form__container snip-form__container--input"><label for="snipcart-newaccount-confirm" class="snip-form__label">Confirm password</label><input type="password" name="confirm" id="snipcart-newaccount-confirm" autocomplete="off"></div><a id="snipcart-newaccount-submit" class="snip-btn snip-btn--full">Create a login</a><button type="submit" style="display: none"></button></form></div></div></div></div>';
-    //})
-
-
     var add_array = new Array();
     for (let i=0;i<4;i++)
     {
@@ -274,13 +289,21 @@ function loadbutton(){
         if(dell_array[i])
         {
             dell_array[i].addEventListener('click',() => {
-                totalCostDell(products[i])
                 remove(products[i].tag);
-                loadbutton()
+                loadbutton();
             })
         }
     }
 }
-
+showproduct();
 displayCart();
-loadbutton()
+loadbutton();
+let carts=document.querySelectorAll('.button');
+    for(let i=0;i<carts.length;i++){
+        carts[i].addEventListener('click',() => {
+            increase(products[i]);
+            displayCart();
+            loadbutton();
+            test();
+    })
+}
