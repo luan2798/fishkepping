@@ -15,28 +15,30 @@
                 <img src="./img/logo.svg" id="logo" alt="a" />
                 <h1 id="ten">FishCastle</h1>
                 <div>
-                    <a onclick="test()" id="cart">
+                    <a onclick="openCart()" id="cart">
                         <img src="./img/abc.svg" id="cart-img"/>
-                        <div id="container-price">$<span class=price>0</span>.00</div>
+                        <div id="container-price">$<span class=price>0</span></div>
                     </a>
                 </div>
             </div>
         </header>
         <div class="popup-cart">
             <div class="container-cart">
-                <div class="container" id="header-carts">
-                    <h2>MY CART</h2>
-                    <span class="container-price" id="container_price">
-                        <span style="color: #999;">SUBTOTAL:</span>
-                        <span>$ <span class="price"> 0</span>.00</span>
-                    </span>
-                    <button onclick="exit()" style="cursor: pointer;">x</button>
-                </div>
-                <div class="container" id="body-carts">
-                </div>
-                <div class="header" id="footer-cart">
-                    <img src="./img/lock.png" style="height: 25px;" alt="">
-                    <a>POWERED AND SECURED BY <b>SNIPCART</b></a>
+                <div id="inside-cart">
+                    <div class="container" id="header-carts">
+                        <h2>MY CART</h2>
+                        <span class="container-price" id="container_price">
+                            <span style="color: #999;">SUBTOTAL:</span>
+                            <span>$ <span class="price"> 0</span></span>
+                        </span>
+                        <button onclick="closeCart()" style="cursor: pointer;">x</button>
+                    </div>
+                    <div class="container" id="body-carts">
+                    </div>
+                    <div class="header" id="footer-cart">
+                        <img src="./img/lock.png" style="height: 25px;" alt="">
+                        <a>POWERED AND SECURED BY <b>SNIPCART</b></a>
+                    </div>
                 </div>
             </div>
         </div>
