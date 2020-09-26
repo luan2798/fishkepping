@@ -1,38 +1,13 @@
-let products =[
-    {
-        id: 1,
-        name:'Halfmoon Betta',
-        tag:'halfmoon',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 25.00,
-        incart: 0
-    },
-    {
-        id: 2,
-        name:'Dragon Scale Betta',
-        tag:'dragonscale',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 35.00,
-        incart: 0
-    },
-    {
-        id: 3,
-        name:'Crowntail Betta',
-        tag:'crowntail',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 7.50,
-        incart: 0
-    },
-    {
-        id: 4,
-        name:'Veiltail Betta',
-        tag:'veiltail',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 5.00,
-        incart: 0
-    }
-];
-//event click
+const getProducts=() =>{
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "http://localhost:3000/products", false);
+    xhttp.send();
+    const products = JSON.parse(xhttp.responseText);
+    return products;
+};
+const products =getProducts();
+// showproduct
 const showProduct=()=>{
     $(".list-sp").empty();
     let k=0;
@@ -265,15 +240,15 @@ const loadAddToCart=()=>{
     });
 }
 const clickOutsideCart=()=>{
-    $(document).click(function (event) {
-        var $target = $(event.target);
-        if (!$target.closest('#inside-cart')) {
-            if (!$target.closest('.button')&&!$target.closest('#cart')&&!$target.closest('.add')&&!$target.closest('.minus')&&!$target.closest('.del'))
+    $(document).click(function (e)
+    {
+        if (!e.target.closest('#inside-cart')) {
+            if (!e.target.closest('.button')&&!e.target.closest('#cart')&&!e.target.closest('.add')&&!e.target.closest('.minus')&&!e.target.closest('.del'))
             {
-                $(".popup-cart").css("display","none");
+                $(".popup-cart").hide();
             }
         }
-    }, false);
+    });
 }
 showProduct();
 displayCart();

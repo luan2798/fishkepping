@@ -32,6 +32,7 @@ html,body{
     margin: 0px auto;
     width: 100%;
     background-color: white;
+    z-index: 1000000;
 }
 #logo{
     height: 38px;
