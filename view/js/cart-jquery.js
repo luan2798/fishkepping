@@ -1,6 +1,14 @@
+const pageLoading=()=>{
+    $(".list-sp").html(`
+        <div class=container>
+            <div class="loader"></div>
+        </div>
+    `);
+    $(".list-sp").css("width","100%");
+}
 const getProducts=() =>{
+    pageLoading();
     const xhttp = new XMLHttpRequest();
-
     xhttp.open("GET", "http://localhost:3000/products", false);
     xhttp.send();
     const products = JSON.parse(xhttp.responseText);
@@ -36,6 +44,7 @@ const showProduct=()=>{
         `)
         k=k+1;
     });
+    loadAddToCart();
 }
 //increase incart
 const decreaseItem=(product)=>{
@@ -250,11 +259,13 @@ const clickOutsideCart=()=>{
         }
     });
 }
-showProduct();
+setTimeout(showProduct,2000);
+
 displayCart();
 loadButton();
 totalCost();
 loadAddToCart();
 clickOutsideCart();
+
 
 
