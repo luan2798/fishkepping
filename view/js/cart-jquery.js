@@ -1,3 +1,4 @@
+let products=[];
 const pageLoading=()=>{
     $(".list-sp").html(`
         <div class=container>
@@ -8,16 +9,15 @@ const pageLoading=()=>{
 }
 const getProducts=() =>{
     pageLoading();
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://localhost:3000/products", false);
-    xhttp.send();
-    const products = JSON.parse(xhttp.responseText);
-    return products;
+    fetch('http://localhost:3000/products').then(d=>d.json()).then(data=>{
+        products = data;
+        $(".list-sp").empty();
+        showProduct();
+    })
 };
-const products =getProducts();
+getProducts();
 // showproduct
 const showProduct=()=>{
-    $(".list-sp").empty();
     let k=0;
     let t;
     products.forEach(product => {
@@ -259,8 +259,6 @@ const clickOutsideCart=()=>{
         }
     });
 }
-setTimeout(showProduct,2000);
-
 displayCart();
 loadButton();
 totalCost();

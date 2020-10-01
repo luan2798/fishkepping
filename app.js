@@ -58,7 +58,9 @@ const readHTML=(path,res)=>{
 }
 
 app.get('/products', (req, res) => {
-    res.json(products);
+    setTimeout(a=>{
+        res.json(products);
+    },2000);
 });
 
 app.get('/', (req, res) => {
