@@ -2,46 +2,30 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const cors = require('cors');
+const mongodb = require('mongodb');
+const { json } = require('body-parser');
 
+let MongoClient = mongodb.MongoClient;
+let url = 'mongodb://localhost:27017/Fishing';
 const app = express();
 app.use(express.static("view"));
 const port = 3000;
 
 // Where we will keep books
-let products =[
-    {
-        id: 1,
-        name:'Halfmoon Betta',
-        tag:'halfmoon',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 25.00,
-        incart: 0
-    },
-    {
-        id: 2,
-        name:'Dragon Scale Betta',
-        tag:'dragonscale',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 35.00,
-        incart: 0
-    },
-    {
-        id: 3,
-        name:'Crowntail Betta',
-        tag:'crowntail',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 7.50,
-        incart: 0
-    },
-    {
-        id: 4,
-        name:'Veiltail Betta',
-        tag:'veiltail',
-        title: 'The Halfmoon betta is arguably one of the prettiest betta species. It is recognized by its large tail that can flare up to 180 degrees',
-        price: 5.00,
-        incart: 0
-    }
-];
+let products =[];
+
+MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var a = db.collection('product');
+    a.find({}).toArray(function (err,data) {
+        //nếu lỗi
+        if (err) throw err;
+        //nếu thành công
+        console.log(data);
+        products=data;
+    });
+    db.close();
+});
 
 app.use(cors());
 
