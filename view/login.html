@@ -6,21 +6,23 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="./css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
+    <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="login">
         <div class="container-login">
-            <form action="http://localhost:3000/authenticate" method="POST">
+            <form>
                 <div>
-                    Tên đăng Nhập :<input class="input" type="text" name="id">
-                    Mật khẩu: <input class="input" type="text" name="password">
+                    Tên đăng Nhập :<input id="username" type="text">
+                    Mật khẩu: <input id="password" type="password">
                 </div>
                 <div class="button">
-                    <button type="submit">Đăng Nhập</button>
+                    <button type="submit" class="login-button">Đăng Nhập</button>
                     <button>Quên mật khẩu</button>
                 </div>
             </form>
         </div>
     </div>
 </body>
+<script type="text/javascript" src="./js/login.js"></script>
 </html>

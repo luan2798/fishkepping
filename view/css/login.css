@@ -3,11 +3,10 @@ body{
 }
 
 .container-login{
-    background-color: blue;
     width: 100%;
-    max-width: 500px;
+    max-width: 200px;
     height: 10px;
-    margin: 0 auto 0 auto;
+    margin: 100px auto 0 auto;
     
 }
 .input{

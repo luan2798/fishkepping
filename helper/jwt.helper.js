@@ -39,6 +39,7 @@ let verifyToken = (token, secretKey) => {
     jwt.verify(token, secretKey, (error, decoded) => {
       if (error) {
         return reject(error);
+        
       }
       resolve(decoded);
     });

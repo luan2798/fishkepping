@@ -4,8 +4,7 @@ const jwt= require('jsonwebtoken');
 const fs = require('fs');
 const cors = require('cors');
 const { json } = require('body-parser');
-/* let LocalStorage = require('node-localstorage').LocalStorage,
-localStorage = new LocalStorage('./scratch'); */
+
 
 const config = require('./constant/config')
 const product = require('./model/product');
@@ -30,16 +29,20 @@ const readHTML=(path,res)=>{
 		res.end();
 	})
 }
-
+let tToken;
 app.get('/products', (req, res) => {
-    setTimeout(a=>{
-        product.find().then(products=>{
-            res.json(products);
-        });
-    },2000);
+    tToken=req.headers.authorization
+    jwtHelper.verifyToken(req.headers.authorization,app.get('Secret')).then(a=>{
+        setTimeout(a=>{
+            product.find().then(products=>{
+                res.json(products);
+            });
+        },2000);
+    }).catch(a=>{
+        res.redirect('./login')
+    })
 });
 
-let tToken;
 app.post('/authenticate',(req,res)=>{
     user.find().then(users=>{
         let resp;
@@ -51,22 +54,30 @@ app.post('/authenticate',(req,res)=>{
                         id: user.id
                     };
                     let token = jwt.sign(payload, app.get('Secret'), {
-                        expiresIn: 10 
+                        expiresIn: 1000000000 
                     });
-                    //localStorage.setItem("abc","abc")
                     tToken=token;
-                    res.redirect('./');
+                    res.json({
+                        message: "abv",
+                        token: token,
+                        key: 1
+                    })
                 }else{
-                    res.redirect('./login');
+                    res.json({
+                        message: "abv",
+                        key: 2
+                    })
                 }
             }else{
-                res.redirect('./login');
+                resp={
+                    message: "abv",
+                    key: 3
+                };
             }
         });
-        res.json(resp);
+        //res.json(resp);
     });
 })
-
 
 app.get('/', (req, res) => {
     jwtHelper.verifyToken(tToken,app.get('Secret')).then(a=>{
@@ -74,11 +85,15 @@ app.get('/', (req, res) => {
     }).catch(a=>{
         res.redirect('./login')
     })
-    //readHTML(config.homePath,res)
 });
 
 app.get('/login',(req,res)=>{
-    readHTML(config.loginPath,res);
+    console.log(typeof(tToken))
+    jwtHelper.verifyToken(tToken,app.get('Secret')).then(a=>{
+        res.redirect('./')
+    }).catch(a=>{
+        readHTML(config.loginPath,res)
+    })
 })
 
 app.listen(config.port, () => console.log(`Hello world app listening on port ${config.port}!`));

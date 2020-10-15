@@ -9,13 +9,19 @@ const pageLoading=()=>{
 }
 const getProducts=() =>{
     pageLoading();
-    fetch('http://localhost:3000/products').then(d=>d.json()).then(data=>{
-        products = data;
-        $(".list-sp").empty();
-        showProduct();
-    })
+    $.ajax({ 
+        type : "GET", 
+        url : 'http://localhost:3000/products', 
+        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`,false);},
+        success : function(data) { 
+            products = data;
+            $(".list-sp").empty();
+            showProduct();
+        }, 
+        error : function(result) {  
+        } 
+    }); 
 };
-getProducts();
 // showproduct
 const showProduct=()=>{
     let k=0;
@@ -259,6 +265,7 @@ const clickOutsideCart=()=>{
         }
     });
 }
+getProducts();
 displayCart();
 loadButton();
 totalCost();
