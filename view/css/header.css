@@ -62,6 +62,12 @@ html,body{
 .price{
     font-size: 16px;
 }
+#logout:hover{
+    cursor: pointer;
+}
+#logout{
+    color: #9094FF ;
+}
 /* title */
 .tieude{
     text-align: center;

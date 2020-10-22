@@ -4,6 +4,7 @@ const jwt= require('jsonwebtoken');
 const fs = require('fs');
 const cors = require('cors');
 const { json } = require('body-parser');
+const bcrypt = require('bcrypt')
 
 
 const config = require('./constant/config')
@@ -39,56 +40,50 @@ app.get('/products', (req, res) => {
             });
         },2000);
     }).catch(a=>{
-        res.redirect('./login')
+        res.send(401)
     })
 });
 
 app.post('/authenticate',(req,res)=>{
     user.find().then(users=>{
         let resp;
-        users.forEach(user => {
-            if(req.body.id===user.id){
-                if(req.body.password===user.password){
-                    const payload = {
-                        check:  true,
-                        id: user.id
-                    };
-                    let token = jwt.sign(payload, app.get('Secret'), {
-                        expiresIn: 1000000000 
-                    });
-                    tToken=token;
-                    res.json({
-                        message: "abv",
-                        token: token,
-                        key: 1
-                    })
-                }else{
-                    res.json({
-                        message: "abv",
-                        key: 2
-                    })
-                }
-            }else{
-                resp={
-                    message: "abv",
-                    key: 3
+        const fuser = users.find(user => user.email === req.body.email)
+        if (fuser == null) {
+            res.json({
+                message: "Tên đăng nhập không đúng",
+                key: 3
+            });
+        }
+        bcrypt.compare(req.body.password, fuser.password).then(a=>{
+            if (a){
+                const payload = {
+                    check:  true,
+                    email: user.email
                 };
+                let token = jwt.sign(payload, app.get('Secret'), {
+                    expiresIn: 100 
+                });
+                res.json({
+                    message: "đăng nhập thành công",
+                    token: token,
+                    key: 1
+                });
             }
-        });
-        //res.json(resp);
+            else{
+                res.json({
+                    message: "Sai mật khẩu",
+                    key: 2
+                });
+            }
+        })
     });
 })
 
 app.get('/', (req, res) => {
-    jwtHelper.verifyToken(tToken,app.get('Secret')).then(a=>{
-        readHTML(config.homePath,res)
-    }).catch(a=>{
-        res.redirect('./login')
-    })
+    readHTML(config.homePath,res)    
 });
 
 app.get('/login',(req,res)=>{
-    console.log(typeof(tToken))
     jwtHelper.verifyToken(tToken,app.get('Secret')).then(a=>{
         res.redirect('./')
     }).catch(a=>{

@@ -3,13 +3,21 @@ const getToken=()=>{
         url: 'http://localhost:3000/authenticate',
         type: 'POST',
         data: {
-            id: $('#username').val(),
+            email: $('#email').val(),
             password: $('#password').val()
         }
     }).done(function (result) {
-        localStorage.setItem("token",result.token)
+        if(result.key===1)
+        {
+            localStorage.setItem("token",result.token);
+            window.location.replace("./");
+        }
+        else{
+            alert(result.message)
+        }
     });
 }
-$('.login-button').click(e=>{
+$('.form-login').submit(e=>{
     getToken();
+    e.preventDefault();
 })

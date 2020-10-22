@@ -1,5 +1,9 @@
 let products=[];
 const pageLoading=()=>{
+    if (!localStorage.getItem('token'))
+    {
+        window.location.replace('./login')
+    }
     $(".list-sp").html(`
         <div class=container>
             <div class="loader"></div>
@@ -18,7 +22,8 @@ const getProducts=() =>{
             $(".list-sp").empty();
             showProduct();
         }, 
-        error : function(result) {  
+        error : function(result) {
+            window.location.replace('./login')
         } 
     }); 
 };
@@ -242,6 +247,10 @@ const loadButton=()=>{
         removeCart(sp.tag);
         loadButton();
     });
+    $('#logout').click(e=>{
+        localStorage.removeItem('token');
+        window.location.replace("./login")
+    })
 }
 const loadAddToCart=()=>{
     $('.button').click(e =>{
