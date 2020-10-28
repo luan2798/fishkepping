@@ -11,22 +11,6 @@ const pageLoading=()=>{
     `);
     $(".list-sp").css("width","100%");
 }
-const getProducts=() =>{
-    pageLoading();
-    $.ajax({ 
-        type : "GET", 
-        url : 'http://localhost:3000/products', 
-        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`,false);},
-        success : function(data) { 
-            products = data;
-            $(".list-sp").empty();
-            showProduct();
-        }, 
-        error : function(result) {
-            window.location.replace('./login')
-        } 
-    }); 
-};
 // showproduct
 const showProduct=()=>{
     let k=0;
