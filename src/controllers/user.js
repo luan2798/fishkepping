@@ -8,9 +8,8 @@ const config = require('../constant/config')
 const user = require('../models/user');
 
 
-const userController=(req,res)=>{
+const postAuthenticate=(req,res)=>{
     user.find().then(users=>{
-        let resp;
         const fuser = users.find(user => user.email === req.body.email)
         if (fuser == null) {
             res.status(401).json({
@@ -41,6 +40,35 @@ const userController=(req,res)=>{
         }
     });
 }
+const postSignup=(req,res)=>{
+    user.find().then(users=>{
+        const fuser = users.find(user => user.email === req.body.email)
+        if (fuser == null) {
+            bcrypt.hash(req.body.password, 10).then(function(hash) {
+                const newUser={
+                    email: req.body.email,
+                    fullname: req.body.fullname,
+                    password: hash
+                }
+                user.insert(newUser).then(a=>{
+                    res.status(200).json({
+                        message: "ok"
+                    });
+                }).catch(err=>{
+                    res.status(401).json({
+                        message: err
+                    });
+                })
+            });
+        }
+        else{
+            res.status(401).json({
+                message: "Email đã tồn tại"
+            });
+        }
+    })
+}
 module.exports={
-    userController:userController
+    postAuthenticate:postAuthenticate,
+    postSignup:postSignup
 }

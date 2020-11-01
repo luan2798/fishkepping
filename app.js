@@ -4,11 +4,11 @@ const cors = require('cors');
 const { json } = require('body-parser');
 
 
-const config = require('./constant/config')
-const apiRouter=require('./routers/api')
-const basicRouter=require('./routers/basic')
+const config = require('./src/constant/config')
+const apiRouter=require('./src/routers/api')
+const basicRouter=require('./src/routers/basic')
 const app = express();
-app.use(express.static("views"));
+app.use(express.static("./src/views"));
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

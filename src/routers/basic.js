@@ -17,4 +17,7 @@ router.get('/', (req, res) => {
 router.get('/login',(req,res)=>{
     readHTML(config.loginPath,res)
 })
+router.get('/signup',(req,res)=>{
+    readHTML(config.signupPath,res)
+})
 module.exports=router;

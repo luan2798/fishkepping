@@ -27,7 +27,7 @@ const find =()=>{
                 db.close();
                 //nếu lỗi
                 if (err){
-                    throw err;
+                    return reject(err);
                 }
                 //nếu thành công
                 console.log("Connect thành công")

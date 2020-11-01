@@ -31,7 +31,7 @@ const showProduct=()=>{
                     <div>
                         <div>$ ${parseFloat(product.price).toFixed(2)}</div>
                         <!--<input type="button" class="button" value="Add to cart">-->
-                        <button class="button" id="btn_add_to_cart_${product.id}">
+                        <button class="button" id="btn_add_to_cart_${product._id}">
                             Add to cart
                         </button>
                     </div>
@@ -121,17 +121,17 @@ const displayCart=()=>{
                             <div><b>${item.name}</b></div>
                         </div>
                         <div class="quantity">
-                            <div class="minus" id="btn_minus_${item.id}">
+                            <div class="minus" id="btn_minus_${item._id}">
                                 -
                             </div>
                             ${item.incart}
-                            <div class="add" id="btn_add_${item.id}">
+                            <div class="add" id="btn_add_${item._id}">
                                 +
                             </div>
                         </div>
                         <div class="price-product" style="color: #999;">$${parseFloat(item.price).toFixed(2)}</div>
                         <div class="total">$${parseFloat(item.price*item.incart).toFixed(2)}</div>
-                        <button class="del" id="btn_del_${item.id}" style="font-size: 30px;">x</button>
+                        <button class="del" id="btn_del_${item._id}" style="font-size: 30px;">x</button>
                     </div>
                </div>
             `)
@@ -214,20 +214,20 @@ const loadButton=()=>{
     $('.add').click(e =>{
         const id=e.target.id;
         const productId=id.split('btn_add_')[1];
-        const sp=products.find(p=>p.id===parseInt(productId));
+        const sp=products.find(p=>p._id==productId);
         increaseCart(sp);
     });
     //click minus
     $('.minus').click(e =>{
         const id=e.target.id;
         const productId=id.split('btn_minus_')[1];
-        const sp=products.find(p=>p.id===parseInt(productId));
+        const sp=products.find(p=>p._id==productId);
         decreaseCart(sp);
     });
     $('.del').click(e =>{
         const id=e.target.id;
         const productId=id.split('btn_del_')[1];
-        const sp=products.find(p=>p.id===parseInt(productId));
+        const sp=products.find(p=>p._id==productId);
         removeCart(sp.tag);
         loadButton();
     });
@@ -240,7 +240,7 @@ const loadAddToCart=()=>{
     $('.button').click(e =>{
         const id=e.target.id;
         const productId=id.split('btn_add_to_cart_')[1];
-        const sp=products.find(p=>p.id===parseInt(productId));
+        const sp=products.find(p=>p._id==productId);
         increaseCart(sp);
         displayCart();
         loadButton();

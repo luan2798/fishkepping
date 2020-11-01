@@ -22,8 +22,8 @@ const connectDB=() =>{
 const find =()=>{
     return new Promise((resolve,reject)=>{
         connectDB().then(db=>{
-            let Product = db.collection('user');
-            Product.find({}).toArray(function (err,data) {
+            let User = db.collection('user');
+            User.find({}).toArray(function (err,data) {
                 db.close();
                 //nếu lỗi
                 if (err){
@@ -36,7 +36,23 @@ const find =()=>{
         })
     })
 }
-
+const insert =(newUser)=>{
+    return new Promise((resolve,reject)=>{
+        connectDB().then(db=>{
+            let User = db.collection('user');
+            User.insertOne(newUser, function (err,res) {
+                db.close();
+                //neu xay ra loi
+                if (err) throw err;
+                console.log('Them thanh cong');
+                return resolve({
+                    message: "thêm thành công"
+                })
+            });
+        })
+    })
+}
 module.exports={
-    find: find
+    find: find,
+    insert: insert
 };

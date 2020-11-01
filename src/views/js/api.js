@@ -1,6 +1,9 @@
+const API_URL=(path)=>{
+    return ("http://localhost:3000/api"+path);
+}
 const getToken=()=>{
     $.ajax({
-        url: 'http://localhost:3000/api/authenticate',
+        url: API_URL('/authenticate'),
         type: 'POST',
         data: {
             email: $('#email').val(),
@@ -17,7 +20,7 @@ const getProducts=() =>{
     pageLoading();
     $.ajax({ 
         type : "GET", 
-        url : 'http://localhost:3000/api/products', 
+        url : API_URL('/products'), 
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`,false);},
         success : function(data) { 
             products = data;
@@ -32,7 +35,7 @@ const getProducts=() =>{
 const checkLogin=() =>{
     $.ajax({ 
         type : "GET", 
-        url : 'http://localhost:3000/api/login', 
+        url : API_URL('/login'), 
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', `${localStorage.getItem('token')}`,false);},
         success : function(data) { 
             window.location.replace('./')
@@ -40,4 +43,19 @@ const checkLogin=() =>{
         error : function(result) {
         } 
     }); 
+};
+const postSignup=() =>{
+    $.ajax({
+        url: API_URL('/signup'),
+        type: 'POST',
+        data: {
+            email: $('#email').val(),
+            fullname: $('#email').val(),
+            password: $('#password').val()
+        }
+    }).done(function (result) {
+        window.location.replace("./login");
+    }).fail(result=>{
+        $(".error").html(result.responseJSON.message)
+    });
 };

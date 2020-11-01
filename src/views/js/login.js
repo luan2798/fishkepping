@@ -3,3 +3,6 @@ $('.form-login').submit(e=>{
     e.preventDefault();
 })
 checkLogin();
+$('#signup').click(e=>{
+    window.location.replace('./signup')
+})
