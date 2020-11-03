@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link rel="stylesheet" type="text/css" href="./css/login.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
-    <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
-    <title>Signup Page</title>
-   <!--Made with love by Mutiullah Samim -->
-   
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-</head>
+<%- include('layouts/account/head.ejs') %>
 <body>
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
-                <div class="card-header">
-                    <h3>Sign Up</h3>
-                    <div class="d-flex justify-content-end social_icon">
-                        <span><i class="fab fa-facebook-square"></i></span>
-                        <span><i class="fab fa-google-plus-square"></i></span>
-                        <span><i class="fab fa-twitter-square"></i></span>
-                    </div>
-                </div>
+                <%- include('layouts/account/cardheader.ejs') %>
                 <div class="card-body">
                     <form class="form-signup">
                         <div class="error"></div>

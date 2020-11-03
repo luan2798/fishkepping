@@ -1,27 +1,8 @@
-const mongodb = require('mongodb');
-
-const config = require('../constant/config');
-
-const MongoClient = mongodb.MongoClient;
-
-const connectDB=() =>{
-    return new Promise((resolve,reject)=>{
-        MongoClient.connect(config.DATABASE_URL, function (err, db) {
-            if (err) {
-                console.log("Connect thất bại")
-                reject(err);
-            }
-            else
-            {
-                resolve(db);
-            }
-        });
-    })
-}
+const Connect=require('./connectDB')
 
 const find =()=>{
     return new Promise((resolve,reject)=>{
-        connectDB().then(db=>{
+        Connect.connectDB().then(db=>{
             let Product = db.collection('product');
             Product.find({}).toArray(function (err,data) {
                 db.close();

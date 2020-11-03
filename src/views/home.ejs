@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FishCastle</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" class="next-head">
+        <link rel="stylesheet" type="text/css" href="./css/header.css">
+        <link rel="stylesheet" type="text/css" href="./css/media.css">
+        <link rel="stylesheet" type="text/css" href="./css/cart.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
+        <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <%- include('layouts/homepage/header.ejs') %>
+        <%- include('layouts/homepage/cart.ejs') %>
+        <main class="main">
+            <img src="./img/background.svg" alt="" id="backgroundimg">
+            <div class="tieude">
+                <h3>REDISCOVER</h3>
+                <h2>Fishkeeping</h2>
+                <p>An <b>exclusive collection of bettas</b> available for everyone.</p>
+            </div>
+            <div class="container">
+                <div class="list-sp">
+                </div>
+            </div>
+        </main>
+        <%- include('layouts/homepage/footer.ejs') %>
+    </body>
+    <script type="text/javascript" src="./js/api.js"></script>
+    <script type="text/javascript" src="./js/cart-jquery.js"></script>
+</html>

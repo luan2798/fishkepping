@@ -1,8 +1,18 @@
 $('.form-login').submit(e=>{
-    getToken();
+    getToken()
+        .then(result=>{
+            localStorage.setItem("token",result.token);
+            window.location.replace("./");
+        })
+        .catch(result=>{
+            $(".error").html(result.responseJSON.message);
+        })
     e.preventDefault();
 })
-checkLogin();
+checkLogin()
+    .then(result=>{
+        window.location.replace('./')
+    });
 $('#signup').click(e=>{
     window.location.replace('./signup')
 })

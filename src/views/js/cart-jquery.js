@@ -258,7 +258,16 @@ const clickOutsideCart=()=>{
         }
     });
 }
-getProducts();
+pageLoading();
+getProducts()
+    .then(data=>{
+        products = data;
+        $(".list-sp").empty();
+        showProduct();
+    })
+    .catch(result=>{
+        window.location.replace('./login')
+    })
 displayCart();
 loadButton();
 totalCost();

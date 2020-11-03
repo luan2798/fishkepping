@@ -1,23 +1,15 @@
 const express = require('express')
 const router = express.Router();
-const fs = require('fs');
 const config = require('../constant/config')
 
-const readHTML=(path,res)=>{
-	fs.readFile(path,(err,data)=>{
-		if(err) throw err;
-		res.write(data);
-		res.end();
-	})
-}
 router.get('/', (req, res) => {
-    readHTML(config.homePath,res)    
+    res.render(config.homePath)    
 });
 
 router.get('/login',(req,res)=>{
-    readHTML(config.loginPath,res)
+	res.render(config.loginPath)
 })
 router.get('/signup',(req,res)=>{
-    readHTML(config.signupPath,res)
+    res.render(config.signupPath)
 })
 module.exports=router;

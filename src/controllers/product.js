@@ -7,11 +7,13 @@ const product = require('../models/product');
 
 
 const getProduct=(req,res)=>{
-    product.find().then(products=>{
-        res.json(products);
-    }).catch(err=>{
-        res.status(404).json(err)
-    })
+    product.find()
+        .then(products=>{
+            res.json(products);
+        })
+        .catch(err=>{
+            res.status(404).json(err)
+        })
 }
 module.exports={
     getProduct:getProduct

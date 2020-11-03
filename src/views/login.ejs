@@ -1,0 +1,38 @@
+<%- include('layouts/account/head.ejs') %>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <%- include('layouts/account/cardheader.ejs') %>
+                <div class="card-body">
+                    <form class="form-login">
+                        <div class="error"></div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input id="email" type="text" class="form-control" placeholder="username">
+                            
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input id="password" type="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox">Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <%- include('layouts/account/cardfooter.ejs') %>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="./js/api.js"></script>
+<script type="text/javascript" src="./js/login.js"></script>
+</html>
