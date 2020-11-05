@@ -13,6 +13,3 @@ checkLogin()
     .then(result=>{
         window.location.replace('./')
     });
-$('#signup').click(e=>{
-    window.location.replace('./signup')
-})

@@ -5,34 +5,30 @@
             <div class="card">
                 <%- include('layouts/account/cardheader.ejs') %>
                 <div class="card-body">
-                    <form class="form-login">
+                    <form class="form-reset">
                         <div class="error"></div>
+                        <div style="color: blanchedalmond; margin-bottom: 20px;">Nhập mật khẩu mới</div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input id="email-login" type="text" class="form-control" placeholder="username">
-                            
+                            <input id="new-pass" type="password" class="form-control" placeholder="Mật khẩu">
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input id="password-login" type="password" class="form-control" placeholder="password">
-                        </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">Remember Me
+                            <input id="renew-pass" type="password" class="form-control" placeholder="Nhập lại Mật khẩu">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                            <input type="submit" value="Tiếp theo" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>
-                <%- include('layouts/account/cardfooter.ejs') %>
             </div>
         </div>
     </div>
 </body>
 <script type="text/javascript" src="./js/api.js"></script>
-<script type="text/javascript" src="./js/login.js"></script>
+<script type="text/javascript" src="./js/reset.js"></script>
 </html>

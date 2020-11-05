@@ -8,6 +8,7 @@ const jwtMiddleware=(req,res,next)=>{
         res.send(401)
     })
 }
+
 module.exports={
     jwtMiddleware:jwtMiddleware
 }

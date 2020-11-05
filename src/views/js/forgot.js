@@ -1,0 +1,10 @@
+$('.form-forgot').submit(e=>{
+    postForgot()
+        .then(result=>{
+            window.location.replace("./endforgot");
+        })
+        .catch(result=>{
+            $(".error").html(result.responseJSON.message)
+        });
+    e.preventDefault();
+})

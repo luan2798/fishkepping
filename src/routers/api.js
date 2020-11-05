@@ -6,12 +6,18 @@ const userController = require('../controllers/user');
 const Middleware=require('../middleware/jwt')
 
 
-router.get('/products',Middleware.jwtMiddleware,productController.getProduct);
-router.get('/login',Middleware.jwtMiddleware,(req, res,) => {
+router.get('/products', Middleware.jwtMiddleware, productController.getProduct);
+
+router.get('/login', Middleware.jwtMiddleware,(req, res,) => {
     res.json("Return Home");
 });
 
-router.post('/authenticate',userController.postAuthenticate)
-router.post('/signup',userController.postSignup)
+router.post('/authenticate', userController.postAuthenticate)
+
+router.post('/signup', userController.postSignup)
+
+router.post('/forgot', userController.postForgot)
+
+router.post('/reset', userController.postReset)
 
 module.exports= router;

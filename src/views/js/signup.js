@@ -1,8 +1,8 @@
 $('.form-signup').submit(e=>{
-    if(!$('#email').val()||!$('#fullname').val()||!$('#password').val()||!$('#repassword').val()){
+    if(!$('#email-signup').val()||!$('#fullname-signup').val()||!$('#password-signup').val()||!$('#repassword-signup').val()){
         $(".error").html("Nhập đầy đủ thông tin")
     }else{
-        if ($('#password').val()===$('#repassword').val())
+        if ($('#password-signup').val()===$('#repassword-signup').val())
         {
             postSignup()
                 .then(result=>{

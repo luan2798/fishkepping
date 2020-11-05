@@ -7,8 +7,8 @@ const getToken=()=>{
             url: API_URL('/authenticate'),
             type: 'POST',
             data: {
-                email: $('#email').val(),
-                password: $('#password').val()
+                email: $('#email-login').val(),
+                password: $('#password-login').val()
             }
         }).done(function (result) {
             return resolve(result);
@@ -53,9 +53,40 @@ const postSignup=() =>{
             url: API_URL('/signup'),
             type: 'POST',
             data: {
-                email: $('#email').val(),
-                fullname: $('#fullname').val(),
-                password: $('#password').val()
+                email: $('#email-signup').val(),
+                fullname: $('#fullname-signup').val(),
+                password: $('#password-signup').val()
+            }
+        }).done(function (result) {
+            return resolve(result);
+        }).fail(result=>{
+            return reject(result);
+        });
+    })
+};
+const postForgot=() =>{
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+            url: API_URL('/forgot'),
+            type: 'POST',
+            data: {
+                email: $('#email-forgot').val(),
+            }
+        }).done(function (result) {
+            return resolve(result);
+        }).fail(result=>{
+            return reject(result);
+        });
+    })
+};
+const postReset=() =>{
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+            url: API_URL('/reset'),
+            type: 'POST',
+            data: {
+                url: window.location.href,
+                pass: $('#new-pass').val(),
             }
         }).done(function (result) {
             return resolve(result);
