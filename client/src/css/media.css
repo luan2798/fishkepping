@@ -1,0 +1,142 @@
+    /* common */
+@media (max-width: 1000px){
+    #backgroundimg {
+        height: 100px;
+        position: fixed;
+    }
+    .container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+    /* header */
+@media (max-width: 600px){
+    #logo{
+        height: 38px;
+    }
+    #ten{
+        padding-top: 3px;
+        font-size: 24px;
+    }
+    *{
+        font-size: 16px;
+    }
+    #cart-img{
+        padding-top: 3px;
+        height: 30px;
+    }
+}
+    /* title */
+@media (max-width: 600px){
+    .tieude{
+        padding-top: 25px;
+        padding-bottom: 100px;
+    }
+    .tieude h3{
+        font-size: 20px;
+    }
+    .tieude h2{
+        font-size: 50px;
+    }
+    .tieude p{
+        font-size: 16px;
+    }
+    .tieude p b{
+        font-size: 16px;
+    }
+}
+    /* product */
+@media (max-width: 600px){
+    .sp{
+        display: grid;
+        margin: 0px auto;
+        margin-bottom: 100px;
+        grid-template-columns: 100%;
+        grid-template-rows: 60% 18% 15% 7%;  
+        grid-template-areas: 
+        "picture"
+        "title"
+        "mota"
+        "button"
+        ;
+        height: 527px;
+    }
+    .sp>h2{
+        font-size: 32px;
+    }
+    .sp p{
+        font-size: 16px;
+        margin: 0px;
+        min-height: 0px;
+    }
+    .sp>div>div{
+        font-size: 28px;
+    }
+    .button{
+        margin-left: 30px;
+        font-size: 14px;
+    }
+    .sp2{
+        display: grid;
+    margin: 0px auto;
+    margin-bottom: 100px;
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 18% 15% 7%; 
+    grid-template-areas: 
+    "picture"
+    "b1"
+    "b2"
+    "b3"
+    ;
+    height: 527px;
+    }
+    .sp2>h2{
+        font-size: 32px;
+    }
+    .sp2 p{
+        font-size: 16px;
+        margin: 0px;
+        min-height: 0px;
+    }
+    .sp2>div>div{
+        font-size: 28px;
+    }
+
+}
+    /* contact */
+@media (max-width: 600px){
+    .div-footer{
+        padding: 100px 20px;
+    }
+    .div-footer h2,span{
+        font-size: 36px;
+    }
+    .div-footer span{
+        font-size: 36px;
+    }
+    .div-footer p{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    #button-end{
+        margin: 0;
+        padding: 15px 20px 15px 20px;
+        background-color: #343434;
+    }
+}
+    /* footer */
+@media (max-width: 600px){
+    .end{
+        height: 100px;
+        display: flex;
+    }
+    .right a{
+        font-size: 16px;
+    }
+    .left{
+        font-size: 16px;
+    }
+    .left a{
+        font-size: 16px;
+    }
+}
