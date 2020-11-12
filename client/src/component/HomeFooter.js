@@ -1,5 +1,5 @@
-function HomeFooter(){
-	return(
+function HomeFooter() {
+	return (
 		<footer className="footer">
 			<div className="div-footer">
 				<div className="container">
