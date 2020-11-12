@@ -195,8 +195,8 @@ class App extends React.Component {
 
     minusClick(i){
 		const id=i.target.id;
-        const productId=id.split('btn_del_')[1];
-        const sp=products.find(p=>p._id==productId);
+        const productId=id.split('btn_minus_')[1];
+        const sp=products.find(p=>p._id.$oid==productId);
         decreaseCart(sp);
 		this.setState({
             totalCost: localStorage.getItem("totalCost") ? localStorage.getItem("totalCost"):"0.00",
